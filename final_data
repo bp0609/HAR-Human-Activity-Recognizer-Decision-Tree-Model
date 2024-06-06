@@ -1,0 +1,46 @@
+import pandas as pd
+import numpy as np
+# !pip install pyarrow
+# List of CSV file names
+csv_files = ['.\Collected Data\standing_1.csv', '.\Collected Data\standing_2.csv', '.\\Collected Data\\standing_3.csv', '.\\Collected Data\\standing_4.csv', 
+'.\Collected Data\standing_5.csv',
+'.\Collected Data\sitting_1.csv', 
+'.\Collected Data\sitting_2.csv', 
+'.\Collected Data\sitting_3.csv', 
+'.\Collected Data\sitting_4.csv', 
+'.\Collected Data\sitting_5.csv', 
+'.\Collected Data\laying_1.csv', 
+'.\Collected Data\laying_2.csv', 
+'.\Collected Data\laying_3.csv', 
+'.\Collected Data\laying_4.csv', 
+'.\Collected Data\laying_5.csv', 
+'.\Collected Data\walking_1.csv',
+'.\Collected Data\walking_2.csv',
+'.\Collected Data\walking_3.csv',
+'.\Collected Data\walking_4.csv',
+'.\Collected Data\walking_5.csv',
+'.\\Collected Data\\Up_Stairs1.csv',
+'.\\Collected Data\\Up_stairs2.csv', 
+'.\\Collected Data\\Up_stairs3.csv' ,
+'.\\Collected Data\\Up_stairs4.csv',
+'.\\Collected Data\\Up_stairs5.csv',
+'.\\Collected Data\\Down_stairs1.csv',
+'.\\Collected Data\\Down_stairs2.csv',
+'.\\Collected Data\\Down_Stairs3.csv',
+'.\\Collected Data\\Down_stairs4.csv',
+'.\\Collected Data\\Down_stairs5.csv' ]
+# Initializean empty list to hold dataframes
+dfs = []
+
+# Read each CSV file and append to the list
+for file in csv_files:
+    df = pd.read_csv(file)
+    dfs.append(df)
+
+# Convert list of dataframes to 3D numpy array
+collected_data = np.array([df.values for df in dfs])
+
+print(collected_data.shape)  # Should print (30, 500, 3)
+print(collected_data[0])
+Y_train=np.array([5,5,5,5,5,4,4,4,4,4,6,6,6,6,6,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,])
+print(Y_train.shape)
